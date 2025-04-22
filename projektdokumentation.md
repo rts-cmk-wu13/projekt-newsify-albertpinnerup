@@ -2,7 +2,7 @@
 
 **Navn:** 
 
-**Hold:** WUxx
+**Hold:** WU13
 
 **Uddannelse:** Webudvikler
 
@@ -13,12 +13,12 @@
 
 ## Teknologier
 
--   HTML
--   CSS
--   JavaScript
--   Webpack
--	Jest
--   ...
+--  HTML (structure)
+--  JavaScript (logic / data collection)
+--  Vite (build system)
+--  Sass (css preprocessor)
+--  Vitest (testing)
+--  GitHub / Netlify (host)
 
 ---
 
