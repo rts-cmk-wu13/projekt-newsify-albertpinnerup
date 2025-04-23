@@ -6,6 +6,13 @@
     font-weight: 1 999; 
     font-style: normal;
   }
+
+  @font-face {
+    font-family: "Open sans";
+    src: url("/fonts/openSans/OpenSans-VariableFont_wdth,wght.ttf") format("truetype-variations");
+    font-weight: 1 999; 
+    font-style: normal;
+  }
   
 
 :root {
@@ -22,8 +29,13 @@
     box-sizing: border-box;
 }
 
+body {
+    font-size: 18px;
+}
+
 p {
     padding-bottom: 1em;
+    font-family: 'Open sans';
 }
 
 /* RWD: */
@@ -35,7 +47,13 @@ img {
 
 a {
     text-decoration: none;
+    font-family: 'Open sans';
     color: light-dark(var.$dark-font-color, var.$light-font-color);
+}
+
+button {
+    font-family: 'Open sans';
+    font-size: 1em;
 }
 
 ul {

@@ -55,8 +55,8 @@ export default function onboarding() {
     let buttons = document.createElement('div');
     buttons.className = 'buttons';
     buttons.innerHTML = `
-      <a href="#">Skip</a>
-      <button>Continue</button>
+      <a href="archive/index.html" class="button button--skip">Skip</a>
+      <button class="button button--cont">Continue</button>
     `;
     divElm.appendChild(buttons);
     
@@ -93,7 +93,7 @@ export default function onboarding() {
 
         if ( index >= 3 ) {
 
-            window.location.href = "facebook.com"
+            window.location.href = "archive/index.html"
 
         } else {
             

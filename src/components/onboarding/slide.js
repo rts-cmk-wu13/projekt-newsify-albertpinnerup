@@ -9,7 +9,7 @@ export default function slide(title, content, imgURL, classname) {
             <img src="${imgURL}" alt="">
         </div>
         <div class="content">
-            <h2>${title}</h2>
+            <h1>${title}</h1>
             <p>${content}</p>
         </div>
         

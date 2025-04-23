@@ -10,7 +10,7 @@
 
     .onboarding__carousel {
         position: relative;
-        
+
         overflow: hidden;
 
         .carousel__track {
@@ -28,20 +28,21 @@
             .content {
                 transform: translateX(0%);
             }
-            
+
         }
+
         .carousel__card--2 {
             .content {
                 transform: translateX(100%);
             }
         }
+
         .carousel__card--3 {
             .content {
                 transform: translateX(200%);
             }
         }
 
-        .img {}
 
         .content {
             position: absolute;
@@ -56,6 +57,32 @@
     .buttons {
         z-index: 100;
         align-self: end;
+        display: flex;
+        gap: 21px;
+
+        .button {
+            display: flex;
+            width: 166px;
+            height: 62px;
+            padding: 10px 31px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            border-radius: 40px;
+            margin-block-start: 3.25rem;
+        }
+
+        .button--skip {
+            border: solid 1px #4D861F;
+        }
+
+        .button--cont {
+            background-color: #4D861F;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
     }
 
     .dots {
