@@ -69,11 +69,7 @@ ul {
     color-scheme: light;
 }
 
-html, input, textarea {
+html {
    color: light-dark(var.$dark-font-color, var.$light-font-color);
    background-color: light-dark(var.$light-background-color, var.$dark-background-color)
-}
-
-input, textarea {
-    border: 1px solid light-dark(var.$dark-background-color, var.$light-background-color);
 }
