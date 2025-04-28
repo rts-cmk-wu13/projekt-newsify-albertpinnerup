@@ -26,19 +26,36 @@ export default async function settingsData() {
     const settingsContent = document.createElement("div");
     settingsContent.className = "settings__content"
 
-    const settingsHeader = document.createElement("div");
-    settingsHeader.className = "settings__header"
+    function settingsHeader () {
+        const settingsHeader = document.createElement("div");
+        settingsHeader.className = "settings__header"
+    
+        settingsHeader.innerHTML = `
+            <h1>Settings</h1>
+            <h2>Categories</h2>
+        `
 
-    settingsHeader.innerHTML = `
-        <h1>Settings</h1>
-        <h2>Categories</h2>
-    `
+        return settingsHeader
+    }
+
+    
+
+    function settingsDarkmode () {
+
+        const settingsDarkmode = document.createElement("div")
+        settingsDarkmode.className = "settings__darkmode"
+
+        settingsDarkmode.innerHTML = `
+            <button class="darkmode__button">Toggle Darkmode</button>
+        `
+
+        return settingsDarkmode
+    }
+
 
     
 
     const uncheckedSectionsArray = readFromLocalStorage('uncheckedSection') || [];
-
-    console.log(uncheckedSectionsArray);
     
 
     sections.forEach(sectionObj => {
@@ -85,7 +102,7 @@ export default async function settingsData() {
     });
 
 
-    settingsContainer.append(settingsHeader, settingsContent);
+    settingsContainer.append(settingsHeader(), settingsContent, settingsDarkmode());
 
     return {settingsContainer, uncheckedSectionsArray};
 }

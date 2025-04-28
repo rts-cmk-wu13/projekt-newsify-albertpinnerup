@@ -6,6 +6,7 @@ import newStories from '../data/home.js';
 import footer from '../components/footer/footer.js';
 import header from '../components/header/header.js';
 import settingsData from '../data/settings.js';
+import darkMode from '../util/darkmode.js';
 
 let app = document.querySelector("#app")
 const {container, searchableArticles} = await newStories()
@@ -37,7 +38,7 @@ if (!readFromSessionStorage('splash')) {
     app.append(header(searchableArticles), container, settingsContainer, footer())
 }
 
-
+darkMode()
 
 
 // setTimeout(() => {
