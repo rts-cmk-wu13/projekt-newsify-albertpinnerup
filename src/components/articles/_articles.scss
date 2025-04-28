@@ -1,6 +1,12 @@
 .articles {
 
     overflow: scroll;
+    display: block;
+    grid-area: 2/1;
+
+    &.visible {
+        display: none;
+    }
     
 
     .article {

@@ -29,6 +29,26 @@ export function removeFromLocalStorage(key) {
 }
 
 
+/**
+ * save an item to local sotrage
+ * @param {string} key 
+ * @param {string | number | boolean | object | any[]} - value to be saved
+ */
+export function saveToSessionStorage(key, value) {
+    sessionStorage.setItem(key, JSON.stringify(value))
+}
+
+
+/**
+ * 
+ * @param {string} key - key to be read from local storage
+ * @returns {string | number | boolean | object | any[]} - value to be read and parsed
+ */
+export function readFromSessionStorage(key) {
+    return JSON.parse(sessionStorage.getItem(key))
+}
+
+
 
 
 

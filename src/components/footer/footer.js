@@ -47,6 +47,49 @@ export default function footer() {
         </div>
     `
 
+    footerElm.querySelectorAll(".footer__menu-link").forEach((item, i, array) => {
+
+        if (i === array.length - 1) {
+
+            item.addEventListener('click', () => {
+                item.classList.toggle("active")
+
+                const settingsPanel = document.querySelector(".settings");
+                const header = document.querySelector("header .header__search-wrapper")
+                const articles = document.querySelector(".articles")
+
+                console.log(settingsPanel);
+
+
+                if (settingsPanel) {
+                    settingsPanel.classList.toggle("visible")
+                    header.classList.toggle("visible")
+                    articles.classList.toggle("visible")   
+                }
+
+                if (!settingsPanel.classList.contains("visible")) {
+                    window.location.reload()
+                }
+
+
+            })
+
+
+        } else {
+            item.addEventListener("click", () => {
+
+                item.classList.toggle("active")
+
+
+            })
+        }
+
+
+
+
+
+    })
+
 
 
     return footerElm

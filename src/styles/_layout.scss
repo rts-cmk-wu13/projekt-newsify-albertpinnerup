@@ -5,6 +5,7 @@
     height: 100vh;
     background-color: light-dark(#fff, #1F1F1F);
     grid-template-rows: auto 1fr auto;
+    overflow: hidden;
 }
 
 input {
