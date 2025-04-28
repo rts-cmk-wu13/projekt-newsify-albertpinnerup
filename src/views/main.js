@@ -5,10 +5,12 @@ import onboarding from '../components/onboarding/onboarding.js'
 import newStories from '../data/home.js';
 import footer from '../components/footer/footer.js';
 import header from '../components/header/header.js';
-import settings from '../components/settings/settings.js';
+import settingsData from '../data/settings.js';
 
 let app = document.querySelector("#app")
-const {container, searchableArticles} = await newStories()
+// const {container, searchableArticles} = await newStories()
+const { settingsContainer } = await settingsData()
+
 
 // app.append(settings("peter"))
 
@@ -33,5 +35,7 @@ const {container, searchableArticles} = await newStories()
 // document.querySelector("#app").append(onboarding())
 
 // const {container, searchableArticles} = await newStories()
-app.append(header(searchableArticles), container, footer())
+// app.append(header(searchableArticles), container, footer())
+
+app.append(settingsContainer, footer())
 

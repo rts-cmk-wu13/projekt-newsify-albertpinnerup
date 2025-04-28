@@ -22,14 +22,21 @@ export default function header(searchResults) {
 
     searchInput.addEventListener("input", e => {
         const value = e.target.value.toLowerCase();
+
+        
+        
     
         searchResults.forEach(article => {
+
+          console.log(article.element.parentElement.parentElement);
+          
           const isVisible =
             article.title.toLowerCase().includes(value) ||
             article.abstract.toLowerCase().includes(value) ||
             article.section.toLowerCase().includes(value);
     
           article.element.classList.toggle("hide", !isVisible);
+          article.element.parentElement.parentElement.classList.toggle("hide", !isVisible);
         });
       });
 

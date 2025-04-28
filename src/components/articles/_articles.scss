@@ -45,6 +45,10 @@
                 padding: 1rem 1.5rem;
             }
 
+            .article__card.hide {
+                display: none;
+            }
+
             .article__card:not(:last-child) {
                 border-bottom: solid 1px #C5C5C5;
             }
@@ -102,5 +106,7 @@
     .article.hide {
         display: none;
     }
+
+    
 
 }

@@ -7,6 +7,7 @@
     padding: 1.9rem;
     height: 100vh;
     display: grid;
+    overflow-x: hidden;
 
     .onboarding__carousel {
         position: relative;
@@ -47,7 +48,7 @@
         .content {
             position: absolute;
             padding: 1.5rem;
-            top: 55%;
+            top: 415px;
             bottom: 0;
             left: 0;
             background-color: var.$dark-background-color;
@@ -58,7 +59,8 @@
         z-index: 100;
         align-self: end;
         display: flex;
-        gap: 21px;
+        gap: 5%;
+        justify-content: center;
 
         .button {
             display: flex;
