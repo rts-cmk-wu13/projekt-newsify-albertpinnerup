@@ -16,3 +16,4 @@ export default function settings(catg) {
     divElm.appendChild(switchEl())
     return divElm
 }
+

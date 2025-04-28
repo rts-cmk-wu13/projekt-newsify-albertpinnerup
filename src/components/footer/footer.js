@@ -67,9 +67,9 @@ export default function footer() {
                     articles.classList.toggle("visible")   
                 }
 
-                if (!settingsPanel.classList.contains("visible")) {
-                    window.location.reload()
-                }
+                // if (!settingsPanel.classList.contains("visible")) {
+                //     window.location.reload()
+                // }
 
 
             })

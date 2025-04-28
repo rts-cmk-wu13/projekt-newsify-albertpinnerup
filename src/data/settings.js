@@ -26,6 +26,14 @@ export default async function settingsData() {
     const settingsContent = document.createElement("div");
     settingsContent.className = "settings__content"
 
+    const settingsHeader = document.createElement("div");
+    settingsHeader.className = "settings__header"
+
+    settingsHeader.innerHTML = `
+        <h1>Settings</h1>
+        <h2>Categories</h2>
+    `
+
     
 
     const uncheckedSectionsArray = readFromLocalStorage('uncheckedSection') || [];
@@ -76,7 +84,8 @@ export default async function settingsData() {
         });
     });
 
-    settingsContainer.append(settingsContent);
+
+    settingsContainer.append(settingsHeader, settingsContent);
 
     return {settingsContainer, uncheckedSectionsArray};
 }

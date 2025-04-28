@@ -15,9 +15,11 @@ export default function switchEl(checked) {
 
     let checkbox = divElm.querySelector('input[type="checkbox"]');
 
-    checkbox.checked = checked
+   
 
+    checkbox.checked = checked;
 
+    
 
     return divElm
 }
