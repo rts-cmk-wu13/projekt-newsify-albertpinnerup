@@ -16,7 +16,7 @@ export default function darkMode() {
         darkState = userPref;
     } else {
         darkState = isDarkMode;
-    } 
+    }
 
     if (darkState) {
         darkBoo = true
@@ -27,20 +27,15 @@ export default function darkMode() {
     }
 
 
-
-
-
-
     buttonElm.addEventListener("click", (e) => {
 
-        if (darkBoo = true) {
-            rootElm.setAttribute("data-dark", darkBoo)
-            saveTolocalStorage("isDarkMode", darkBoo)
-        } else {
-            saveTolocalStorage("isDarkMode", darkBoo)
-            rootElm.setAttribute("data-dark", darkBoo)
-        }
-    })
+        darkBoo = !darkBoo
 
+        rootElm.setAttribute("data-dark", darkBoo)
+        saveTolocalStorage("isDarkMode", darkBoo)
+
+        console.log(darkBoo);
+
+    })
 
 }

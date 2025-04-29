@@ -51,7 +51,7 @@
             top: 415px;
             bottom: 0;
             left: 0;
-            background-color: var.$dark-background-color;
+            background-color: light-dark(var.$light-background-color, var.$dark-background-color);
         }
     }
 
@@ -76,11 +76,12 @@
         }
 
         .button--skip {
-            border: solid 1px #4D861F;
+            border: solid 1px var.$newsify-green;
+            color: var.$newsify-green;
         }
 
         .button--cont {
-            background-color: #4D861F;
+            background-color: var.$newsify-green;
             color: #fff;
             border: none;
             cursor: pointer;
@@ -101,7 +102,7 @@
         }
 
         .dot.active {
-            background-color: #4D861F;
+            background-color: var.$newsify-green;
             width: 66px;
         }
     }

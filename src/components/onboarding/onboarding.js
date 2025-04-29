@@ -93,7 +93,7 @@ export default function onboarding() {
 
         if ( index >= 3 ) {
 
-            window.location.href = "archive/index.html"
+            window.location.reload()
 
         } else {
             

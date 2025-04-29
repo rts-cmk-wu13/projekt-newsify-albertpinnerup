@@ -21,11 +21,10 @@
 
     .splash__title {
         color: transparent;
-        background-image: linear-gradient(#fff, #fff);
+        background-image: linear-gradient(light-dark(var.$dark-font-color, var.$light-font-color),light-dark(var.$dark-font-color, var.$light-font-color));
         background-repeat: no-repeat;
         -webkit-background-clip: text;
         background-position: -750px 0;
         transition: background-position 1.5s cubic-bezier(1, 0, 0, 1);
     }
-
 }

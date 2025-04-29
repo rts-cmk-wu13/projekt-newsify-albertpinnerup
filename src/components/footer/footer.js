@@ -10,7 +10,7 @@ export default function footer() {
             <nav class="footer__nav">
                 <ul class="footer__menu">
                     <li class="footer__menu-item">
-                        <a href="" class="footer__menu-link active">
+                        <a href="/index.html" class="footer__menu-link active">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
                                 <path d="M2 7.99998L11.732 3.13398C11.8152 3.09243 11.907 3.0708 12 3.0708C12.093 3.0708 12.1848 3.09243 12.268 3.13398L22 7.99998M20 11V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
@@ -18,7 +18,7 @@ export default function footer() {
                         </a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="" class="footer__menu-link">
+                        <a href="/archive/index.html" class="footer__menu-link">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
                                 <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
@@ -26,7 +26,7 @@ export default function footer() {
                         </a>
                     </li>
                     <li class="footer__menu-item">
-                        <a href="" class="footer__menu-link">
+                        <a href="/popular/index.html" class="footer__menu-link">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
                                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
@@ -52,33 +52,23 @@ export default function footer() {
         if (i === array.length - 1) {
 
             item.addEventListener('click', () => {
-                item.classList.toggle("active")
 
                 const settingsPanel = document.querySelector(".settings");
                 const header = document.querySelector("header .header__search-wrapper")
                 const articles = document.querySelector(".articles")
 
-                console.log(settingsPanel);
+                item.classList.toggle("active")
 
 
                 if (settingsPanel) {
                     settingsPanel.classList.toggle("visible")
                     header.classList.toggle("visible")
-                    articles.classList.toggle("visible")   
+                    articles.classList.toggle("visible")
                 }
 
-                // if (!settingsPanel.classList.contains("visible")) {
-                //     window.location.reload()
-                // }
-
-
-            })
-
-
-        } else {
-            item.addEventListener("click", () => {
-
-                item.classList.toggle("active")
+                if (!settingsPanel.classList.contains("visible")) {
+                    window.location.reload()
+                }
 
 
             })
@@ -89,6 +79,25 @@ export default function footer() {
 
 
     })
+
+    // Set active class based on current URL
+    const currentPath = window.location.pathname;
+
+    footerElm.querySelectorAll(".footer__menu-link").forEach(link => {
+        const href = link.getAttribute("href");
+
+        console.log(currentPath);
+        console.log(href);
+        
+        
+
+        if (href && href === currentPath) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
+
 
 
 

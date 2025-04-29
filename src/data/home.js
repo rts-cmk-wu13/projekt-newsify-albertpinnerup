@@ -5,9 +5,9 @@ import articleCard from "../components/articles/articles.js";
 import { readFromLocalStorage } from "../util/localstorage.js";
 
 export default async function newStories(sections) {
-    const apiKey = import.meta.env.VITE_NYT_API_KEY;
+    const APIKEY = import.meta.env.VITE_NYT_API_KEY;
 
-    const res = await fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/all.json?limit=40&api-key=${apiKey}`);
+    const res = await fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/all.json?limit=40&api-key=${APIKEY}`);
     const data = await res.json();
 
     const container = document.createElement("div");
@@ -58,5 +58,5 @@ export default async function newStories(sections) {
         container.appendChild(wrapper);
     });
 
-    return { container, searchableArticles, excludedSections };
+    return { container, searchableArticles };
 }

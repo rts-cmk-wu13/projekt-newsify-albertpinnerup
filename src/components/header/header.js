@@ -8,7 +8,7 @@ export default function header(searchResults) {
     headerElm.innerHTML = `
         <div class="header__title-container">
             <div class="header__logo">
-                <img src="src/img/newsify_logo_1.svg" alt="">
+                <img src="../src/img/newsify_logo_1.svg" alt="">
             </div>
             <p class="header__title">Newsify</p>
         </div>
