@@ -1,6 +1,6 @@
 import './_header.scss'
 
-export default function header(searchResults) {
+export default function header(searchResults, page) {
 
     let headerElm = document.createElement("header")
     headerElm.className = "header"
@@ -13,7 +13,7 @@ export default function header(searchResults) {
             <p class="header__title">Newsify</p>
         </div>
         <div class="header__search-wrapper">
-            <input type="search" id="search" placeholder="Search news">
+            <input type="search" id="search" placeholder="Search ${page}">
         </div>
     `
 

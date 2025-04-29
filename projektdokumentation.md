@@ -28,11 +28,16 @@
 
 (Hvilke node-pakker har du installeret for at dit projekt virker? Beskriv kort hvilket "problem" hver pakke løser.)
 
+
+
 ---
 
 ### Argumentation for de valg du selvstændigt har truffet under løsningen af opgaven
 
 (Hvilke overvejelser har du gjort dig, fx. i forbindelse med dit valg af animationer)
+Jeg satte mig for kun at ville have tre html filer - en til home, en til archive og en til popular. Resten (splash, onboarding og settings) ville jeg sætte ind og fjerne igen dynamisk, så siden flowede bedre. Det syntes jeg at jeg har fået løst godt.
+
+
 
 ---
 ### Vurdering af egen indsats & gennemførelse af opgaveforløbet (Arbejdsgangen)

@@ -16,6 +16,7 @@ export default async function newStories(sections) {
     const excludedSections = readFromLocalStorage('uncheckedSection') || [];
     const searchableArticles = [];
 
+
     console.log(data);
     
 
@@ -45,6 +46,8 @@ export default async function newStories(sections) {
                 story.abstract,
                 story.multimedia[0].url
             );
+
+            card.dataset.article = JSON.stringify(story)
             openContainer.appendChild(card);
 
             searchableArticles.push({

@@ -5,6 +5,7 @@ import header from '../components/header/header.js';
 import settingsData from '../data/settings.js';
 import darkMode from '../util/darkmode.js';
 import popular from '../data/popularData.js';
+import { swiperAdd } from '../util/swiper.js';
 
 let app = document.querySelector("#app")
 const { settingsContainer } = await settingsData()
@@ -13,13 +14,11 @@ const { popularContainer, searchableArticles } = await popular()
 
 
     
-app.append(header(searchableArticles), popularContainer, settingsContainer, footer())
+app.append(header(searchableArticles, "popular"), popularContainer, settingsContainer, footer())
         
-    
-
-
-
 darkMode()
+swiperAdd()
+
 
 
 

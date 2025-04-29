@@ -69,27 +69,24 @@ export default function footer() {
                 if (!settingsPanel.classList.contains("visible")) {
                     window.location.reload()
                 }
-
-
             })
         }
-
-
-
-
-
     })
 
     // Set active class based on current URL
-    const currentPath = window.location.pathname;
+    let currentPath = window.location.pathname;
+
+    if (currentPath === "/" || currentPath === "") {
+        currentPath = "/index.html";
+    }
+
+
 
     footerElm.querySelectorAll(".footer__menu-link").forEach(link => {
         const href = link.getAttribute("href");
 
-        console.log(currentPath);
-        console.log(href);
-        
-        
+
+
 
         if (href && href === currentPath) {
             link.classList.add("active");
@@ -97,9 +94,6 @@ export default function footer() {
             link.classList.remove("active");
         }
     });
-
-
-
 
     return footerElm
 }

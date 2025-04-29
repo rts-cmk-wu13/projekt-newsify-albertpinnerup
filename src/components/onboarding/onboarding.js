@@ -1,11 +1,8 @@
 import './_onboarding.scss';
-
-import { readFromLocalStorage, saveTolocalStorage } from '../../util/localstorage.js';
 import slide from './slide.js';
 
-export default function onboarding() {
+export default function onboarding(onComplete) {
 
-    saveTolocalStorage("hasOnboarded", true)
 
     let divElm = document.createElement("div")
     divElm.className = "onboarding"
@@ -93,7 +90,7 @@ export default function onboarding() {
 
         if ( index >= 3 ) {
 
-            window.location.reload()
+            onComplete()
 
         } else {
             

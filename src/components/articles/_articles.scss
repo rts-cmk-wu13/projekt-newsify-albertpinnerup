@@ -1,3 +1,5 @@
+@use '/src/styles/variables' as var;
+
 .articles {
 
     overflow: scroll;
@@ -42,13 +44,30 @@
             display: grid;
             opacity: 0;
             max-height: 0;
+            touch-action: none;
 
             .article__card {
-                display: grid;
-                grid-template-columns: auto 1fr;
-                gap: .5rem;
+                
                 align-content: center;
-                padding: 1rem 1.5rem;
+                background-color: var.$newsify-green;
+                position: relative;
+
+                &.delete {
+                    background-color: #FF5D5D;
+                }
+
+                .article__content {
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    gap: .5rem;
+                    position: relative;
+                    padding: 1rem 1.5rem;
+                    background-color: light-dark(#FFF, #1F1F1F);;
+
+                    &.animate {
+                        transition: all .7s ease-in-out;
+                    }
+                }
             }
 
             .article__card.hide {
