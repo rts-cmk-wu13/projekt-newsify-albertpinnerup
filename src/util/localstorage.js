@@ -48,6 +48,15 @@ export function readFromSessionStorage(key) {
     return JSON.parse(sessionStorage.getItem(key))
 }
 
+/**
+ * 
+ * @param {string} key 
+ * @returns {undefined}
+ */
+export function removeFromSessionStorage(key) {
+    sessionStorage.removeItem(key)
+}
+
 
 
 

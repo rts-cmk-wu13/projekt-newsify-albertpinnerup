@@ -37,12 +37,14 @@ if (!readFromSessionStorage('splash')) {
                 if (ob) ob.remove()
 
                 app.append(header(searchableArticles, "news"), container, settingsContainer, footer())
-
+                darkMode()
+                swiperAdd()
                 
             }))
         } else {
             app.append(header(searchableArticles, "news"), container, settingsContainer, footer())
-            
+            darkMode()
+            swiperAdd()
         }
 
     }, 3000);
@@ -50,11 +52,11 @@ if (!readFromSessionStorage('splash')) {
 } else {
 
     app.append(header(searchableArticles, "news"), container, settingsContainer, footer())
-   
+    darkMode()
+    swiperAdd()
 
 }
 
-darkMode()
-swiperAdd()
+
 
 

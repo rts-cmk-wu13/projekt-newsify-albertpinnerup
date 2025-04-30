@@ -1,8 +1,9 @@
 import './_articles.scss'
 
-export default function articleCard(head, sub, img) {
-    const divElm = document.createElement("div");
+export default function articleCard(head, sub, img, url) {
+    const divElm = document.createElement("a");
     divElm.className = "article__card";
+    divElm.href = url
 
     divElm.innerHTML = `
     <div class="article__content">
