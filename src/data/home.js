@@ -44,7 +44,8 @@ export default async function newStories(sections) {
             const card = articleCard(
                 story.title,
                 story.abstract,
-                story.multimedia[0].url
+                story.multimedia[0].url,
+                story.url
             );
 
             card.dataset.article = JSON.stringify(story)

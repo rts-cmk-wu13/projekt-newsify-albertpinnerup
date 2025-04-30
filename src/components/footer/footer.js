@@ -1,3 +1,4 @@
+import { readFromSessionStorage, removeFromSessionStorage } from '../../util/localstorage'
 import './_footer.scss'
 
 export default function footer() {
@@ -67,7 +68,12 @@ export default function footer() {
                 }
 
                 if (!settingsPanel.classList.contains("visible")) {
-                    window.location.reload()
+
+                    if (readFromSessionStorage('settingsChanged') === true) {
+                        removeFromSessionStorage('settingsChanged');
+                        window.location.reload()
+                    }
+                    
                 }
             })
         }

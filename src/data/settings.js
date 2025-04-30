@@ -1,5 +1,5 @@
 import settings from "../components/settings/settings.js";
-import { saveTolocalStorage, readFromLocalStorage } from "../util/localstorage.js";
+import { saveTolocalStorage, readFromLocalStorage, saveToSessionStorage } from "../util/localstorage.js";
 
 
 export default async function settingsData() {
@@ -98,6 +98,7 @@ export default async function settingsData() {
                 }
             }
  
+            saveToSessionStorage('settingsChanged', true)
         });
     });
 

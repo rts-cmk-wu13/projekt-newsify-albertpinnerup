@@ -63,10 +63,16 @@
                     position: relative;
                     padding: 1rem 1.5rem;
                     background-color: light-dark(#FFF, #1F1F1F);;
+                    z-index: 1;
 
                     &.animate {
                         transition: all .7s ease-in-out;
                     }
+                }
+
+                .article__bookmark, .article__delete {
+                    z-index: 0;
+                    color: #fff
                 }
             }
 

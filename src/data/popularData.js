@@ -41,7 +41,8 @@ export default async function popular() {
             const card = articleCard(
                 story.title,
                 story.abstract,
-                story.media[0]["media-metadata"][0].url
+                story.media[0]["media-metadata"][0].url,
+                story.url
             );
 
             card.dataset.article = JSON.stringify(story)
