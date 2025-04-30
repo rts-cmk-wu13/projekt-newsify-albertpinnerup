@@ -51,7 +51,8 @@ export default function archive() {
                 const card = articleCard(
                     story.title,
                     story.abstract,
-                    imageUrl
+                    imageUrl,
+                    story.url
                 );
 
                 card.dataset.article = JSON.stringify(story);

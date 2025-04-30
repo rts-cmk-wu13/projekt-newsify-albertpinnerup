@@ -13,18 +13,27 @@ export function swiperAdd() {
         let currentX;
         let movedX;
 
-        let icon = document.createElement("span")
-        icon.innerHTML = `
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-        `
+        function createBookmarkIcon() {
+            const span = document.createElement("span");
+            span.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086
+                        5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304
+                        3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19
+                        4.46957 19 5V21Z"
+                        stroke="#FFF" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            `;
+            span.style.position = "absolute";
+            span.style.top = "50%";
+            span.style.right = "50px";
+            span.style.transform = "translateY(-50%)";
+            span.className = "article__bookmark";
+            return span;
+        }
 
-        icon.style.position = "absolute"
-        icon.style.top = "50%"
-        icon.style.right = "50px"
-        icon.style.transform = "translateY(-50%"
-        icon.className = "article__bookmark"
 
 
         article.addEventListener("pointerdown", down)
@@ -34,7 +43,19 @@ export function swiperAdd() {
         function down(e) {
 
             initialX = e.clientX;
-            e.target.closest(".article__content").classList.remove("animate");
+
+            const card = e.target.closest(".article__card");
+            const content = e.target.closest(".article__content");
+            const iconElement = card.querySelector(".article__bookmark, .article__delete");
+
+            content.style.transition = "unset";
+            content.style.transform = "unset";
+
+            if (iconElement) {
+                iconElement.style.transition = "unset";
+            }
+
+            content.classList.remove("animate");
 
         }
 
@@ -52,8 +73,8 @@ export function swiperAdd() {
 
             if (movedX < 0 && !iconElement) {
 
-                card.append(icon);
-                iconElement = icon;
+                iconElement = createBookmarkIcon();
+                card.append(iconElement);
                 iconElement.classList.add("save")
 
             }
@@ -65,7 +86,14 @@ export function swiperAdd() {
                 if (movedX < -threshold) {
                     svg.style.fill = "currentColor"
                 } else {
-                    svg.style.fill = "none"
+
+                    const articleData = card.dataset.article
+                    const parsed = JSON.parse(articleData)
+                    const saved = readFromLocalStorage("savedArticles") || [];
+                    const alreadySaved = saved.some(article =>
+                        (article.uri === parsed.uri));
+
+                    svg.style.fill = alreadySaved ? "currentColor" : "none";
                 }
 
                 const pullIn = Math.min(-movedX, threshold);
@@ -89,9 +117,6 @@ export function swiperAdd() {
             const content = e.target.closest(".article__content");
             const iconElement = card.querySelector(".article__bookmark");
 
-            content.classList.add("animate");
-            content.style.left = "0px"
-
             if (movedX < 0) {
                 content.classList.add("animate");
                 content.style.left = "0px";
@@ -104,17 +129,38 @@ export function swiperAdd() {
 
             if (movedX < -threshold) {
 
-                const articleData = card.dataset.article
-                const parsed = JSON.parse(articleData)
-                const saved = readFromLocalStorage("savedArticles") || [];
+                content.style.transition = "left .3s ease-out"
+                content.style.left = -threshold + "px"
 
-                const alreadySaved = saved.some(article =>
-                    (article.uri === parsed.uri));
+                if (iconElement) {
+                    iconElement.style.transition = "right .3s ease-out";
+                    iconElement.style.right = (base_right + threshold) + "px";
 
-                if (!alreadySaved) {
-                    saved.push(parsed)
-                    saveTolocalStorage("savedArticles", saved)
                 }
+
+                setTimeout(() => {
+
+                    const articleData = card.dataset.article
+                    const parsed = JSON.parse(articleData)
+                    const saved = readFromLocalStorage("savedArticles") || [];
+
+                    const alreadySaved = saved.some(article =>
+                        (article.uri === parsed.uri));
+
+                    if (!alreadySaved) {
+                        saved.push(parsed)
+                        saveTolocalStorage("savedArticles", saved)
+                    }
+
+                    content.style.transition = "left 0.4s ease-in-out";
+                    content.style.left = "0px";
+
+                    if (iconElement) {
+                        iconElement.style.transition = "right 0.4s ease-in-out";
+                        iconElement.style.right = base_right + "px";
+                    }
+
+                }, 700);
             }
 
             setTimeout(() => {
@@ -122,7 +168,7 @@ export function swiperAdd() {
                     iconElement.remove()
                     iconElement.style.transition = "unset"
                 }
-            }, 700);
+            }, 1100);
 
 
             initialX = undefined;
