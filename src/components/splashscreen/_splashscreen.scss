@@ -1,10 +1,10 @@
-@use '/src/styles/variables' as var;
+@use '/src/styles/variables' as vars;
 
 .splashscreen {
 
-    height: 100vh;
+    height: calc(var(--vh) * 100);
     display: grid;
-    background-color: light-dark(var.$light-background-color, var.$dark-background-color);
+    background-color: light-dark(vars.$light-background-color, vars.$dark-background-color);
 
 
     .splash__img {
@@ -21,7 +21,7 @@
 
     .splash__title {
         color: transparent;
-        background-image: linear-gradient(light-dark(var.$dark-font-color, var.$light-font-color),light-dark(var.$dark-font-color, var.$light-font-color));
+        background-image: linear-gradient(light-dark(vars.$dark-font-color, vars.$light-font-color),light-dark(vars.$dark-font-color, vars.$light-font-color));
         background-repeat: no-repeat;
         -webkit-background-clip: text;
         background-position: -750px 0;

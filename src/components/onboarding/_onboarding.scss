@@ -1,11 +1,11 @@
-@use '/src/styles/variables' as var;
+@use '/src/styles/variables' as vars;
 
 .onboarding {
 
     text-align: center;
     position: relative;
     padding: 1.9rem;
-    height: 100vh;
+    height: calc((var(--vh) * 100));
     display: grid;
     overflow-x: hidden;
 
@@ -51,7 +51,7 @@
             top: 415px;
             bottom: 0;
             left: 0;
-            background-color: light-dark(var.$light-background-color, var.$dark-background-color);
+            background-color: light-dark(vars.$light-background-color, vars.$dark-background-color);
         }
     }
 
@@ -76,12 +76,12 @@
         }
 
         .button--skip {
-            border: solid 1px var.$newsify-green;
-            color: var.$newsify-green;
+            border: solid 1px vars.$newsify-green;
+            color: vars.$newsify-green;
         }
 
         .button--cont {
-            background-color: var.$newsify-green;
+            background-color: vars.$newsify-green;
             color: #fff;
             border: none;
             cursor: pointer;
@@ -102,7 +102,7 @@
         }
 
         .dot.active {
-            background-color: var.$newsify-green;
+            background-color: vars.$newsify-green;
             width: 66px;
         }
     }

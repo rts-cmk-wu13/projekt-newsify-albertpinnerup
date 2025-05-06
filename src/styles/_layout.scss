@@ -1,16 +1,16 @@
-@use '/src/styles/variables' as var;
+@use '/src/styles/variables' as vars;
 
 #app {
     display: grid;
-    height: 100vh;
+    height: calc(var(--vh) * 100);
     background-color: light-dark(#fff, #1F1F1F);
     grid-template-rows: auto 1fr auto;
     overflow: hidden;
 }
 
 input {
-    background-color: var.$light-font-color;
-    color: var.$dark-font-color;
+    background-color: vars.$light-font-color;
+    color: vars.$dark-font-color;
     border: none;
 
     &::placeholder {

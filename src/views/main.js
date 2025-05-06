@@ -8,6 +8,10 @@ import header from '../components/header/header.js';
 import settingsData from '../data/settings.js';
 import darkMode from '../util/darkmode.js';
 import { swiperAdd } from '../util/swiper.js';
+import setVh from '../util/dynamicViewport.js';
+document.addEventListener('DOMContentLoaded', () => {
+    setVh();
+});
 
 const app = document.querySelector("#app");
 
@@ -22,6 +26,7 @@ if (!readFromSessionStorage('splash')) {
 
     app.append(splash)
     saveToSessionStorage('splash', true)
+    setVh()
 
     setTimeout(() => {
 
@@ -40,12 +45,14 @@ if (!readFromSessionStorage('splash')) {
                 app.append(header(searchableArticles, "news"), container, settingsContainer, footer())
                 darkMode()
                 swiperAdd()
+                setVh()
                 
             }))
         } else {
             app.append(header(searchableArticles, "news"), container, settingsContainer, footer())
             darkMode()
             swiperAdd()
+            
         }
 
     }, 3000);
@@ -55,6 +62,7 @@ if (!readFromSessionStorage('splash')) {
     app.append(header(searchableArticles, "news"), container, settingsContainer, footer())
     darkMode()
     swiperAdd()
+    setVh()
 
 }
 
