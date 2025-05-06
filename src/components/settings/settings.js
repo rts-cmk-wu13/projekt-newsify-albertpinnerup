@@ -8,7 +8,7 @@ export default function settings(catg) {
 
     divElm.innerHTML = `
             <div class="settings__logo">
-                <img src="src/img/newsify_logo_1.svg" alt="">
+                <img src="img/newsify_logo_1.svg" alt="">
             </div>
             <h3 class="settings__category">${catg.toUpperCase()}</h3>
     `
