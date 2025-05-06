@@ -7,19 +7,18 @@ import darkMode from '../util/darkmode.js';
 import popular from '../data/popularData.js';
 import { swiperAdd } from '../util/swiper.js';
 
-let app = document.querySelector("#app")
-const { settingsContainer } = await settingsData()
-const { popularContainer, searchableArticles } = await popular()
+let app = document.querySelector("#app");
 
-
-
-    
-app.append(header(searchableArticles, "popular"), popularContainer, settingsContainer, footer())
+(async function init() {
+const { settingsContainer } = await settingsData();
+const { popularContainer, searchableArticles } = await popular();
+ 
+app.append(header(searchableArticles, "popular"), popularContainer, settingsContainer, footer());
         
-darkMode()
-swiperAdd()
+darkMode();
+swiperAdd();
 
-
+})();
 
 
 
