@@ -1,5 +1,8 @@
 import './_onboarding.scss';
 import slide from './slide.js';
+import onboarding1 from '/img/onboarding_1_dark.png';
+import onboarding2 from '/img/onboarding_2_dark.png';
+import onboarding3 from '/img/onboarding_3_dark.png';
 
 export default function onboarding(onComplete) {
 
@@ -18,19 +21,19 @@ export default function onboarding(onComplete) {
         slide(
             "Stay Connected, Everywhere, Anytime", 
             "Welcome to Newsify, your ultimate destination for breaking news, exclusive stories, and tailored content.", 
-            "/img/onboarding_1_dark.png",
+            onboarding1,
             "carousel__card--1"
         ),
         slide(
             "Become a Savvy Global Citizen", 
             "Discover tailored news that aligns with your interests and preferences. Your personalized news journey awaits!", 
-            "/img/onboarding_2_dark.png",
+            onboarding2,
             "carousel__card--2"
         ),
         slide(
             "Enhance your News Journey Now!", 
             "Be part of our dynamic community and contribute your insights and participate in enriching conversations.", 
-            "/img/onboarding_3_dark.png",
+            onboarding3,
             "carousel__card--3"
         )
     )

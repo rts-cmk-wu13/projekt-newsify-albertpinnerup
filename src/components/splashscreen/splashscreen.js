@@ -1,4 +1,5 @@
 import './_splashscreen.scss'
+import newsify_logo_1 from '/img/newsify_logo_1.svg';
 
 export default function splashScreen() {
 
@@ -7,7 +8,7 @@ export default function splashScreen() {
 
     divElm.innerHTML = `
         <div class="splash__img">
-            <img src="img/newsify_logo_1.svg" alt="">
+            <img src=${newsify_logo_1} alt="">
             <h1 class="splash__title">Newsify</h1>
         </div>
     `
