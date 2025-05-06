@@ -32,6 +32,8 @@ export default async function popular() {
             sectionGroups[section].push(story);
         });
 
+   
+
     Object.entries(sectionGroups).forEach(([section, stories]) => {
         const { wrapper, openContainer } = sectionWrapper(section);
 
