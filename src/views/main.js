@@ -9,11 +9,12 @@ import settingsData from '../data/settings.js';
 import darkMode from '../util/darkmode.js';
 import { swiperAdd } from '../util/swiper.js';
 
-let app = document.querySelector("#app")
+const app = document.querySelector("#app");
+
+
+(async function init() {
 const { container, searchableArticles } = await newStories()
 const { settingsContainer } = await settingsData()
-
-
 
 let splash = splashScreen()
 
@@ -57,6 +58,6 @@ if (!readFromSessionStorage('splash')) {
 
 }
 
-
+})();
 
 

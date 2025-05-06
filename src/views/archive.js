@@ -8,21 +8,19 @@ import popular from '../data/popularData.js';
 import { swiperDelete} from '../util/swiper.js';
 import archive from '../data/archiveData.js';
 
-let app = document.querySelector("#app")
-const { settingsContainer } = await settingsData()
-const {archiveContainer, searchableArticles } = archive()
+const app = document.querySelector("#app");
 
-
-
+(async function init() {
+    const { settingsContainer } = await settingsData()
+    const {archiveContainer, searchableArticles } = archive()
+       
+    app.append(header(searchableArticles, "archive"), archiveContainer, settingsContainer, footer())
+            
     
-app.append(header(searchableArticles, "archive"), archiveContainer, settingsContainer, footer())
-        
-    
+    darkMode()
+    swiperDelete()
+})();
 
-
-
-darkMode()
-swiperDelete()
 
 
 
