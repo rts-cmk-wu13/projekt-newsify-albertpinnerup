@@ -1,4 +1,5 @@
 import './_header.scss'
+import newsify_logo_1 from '/img/newsify_logo_1.svg';
 
 export default function header(searchResults, page) {
 
@@ -8,7 +9,7 @@ export default function header(searchResults, page) {
     headerElm.innerHTML = `
         <div class="header__title-container">
             <div class="header__logo">
-                <img src="/img/newsify_logo_1.svg" alt="">
+                <img src=${newsify_logo_1} alt="">
             </div>
             <p class="header__title">Newsify</p>
         </div>

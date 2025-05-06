@@ -7,6 +7,11 @@ import darkMode from '../util/darkmode.js';
 import popular from '../data/popularData.js';
 import { swiperDelete} from '../util/swiper.js';
 import archive from '../data/archiveData.js';
+import setVh from '../util/dynamicViewport.js';
+document.addEventListener('DOMContentLoaded', () => {
+    setVh();
+});
+
 
 const app = document.querySelector("#app");
 

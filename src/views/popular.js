@@ -6,6 +6,11 @@ import settingsData from '../data/settings.js';
 import darkMode from '../util/darkmode.js';
 import popular from '../data/popularData.js';
 import { swiperAdd } from '../util/swiper.js';
+import setVh from '../util/dynamicViewport.js';
+document.addEventListener('DOMContentLoaded', () => {
+    setVh();
+});
+
 
 let app = document.querySelector("#app");
 
