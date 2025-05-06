@@ -1,4 +1,5 @@
 import './_articles.scss'
+import 'newsify_logo_1' from '../img/newsify_logo_1.svg'
 
 export default function sectionWrapper(sectionTitle) {
     const wrapper = document.createElement("div");
