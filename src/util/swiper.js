@@ -309,8 +309,6 @@ export function swiperDelete() {
                     // 2) Force reflow so the start height is applied immediately
                     void card.offsetHeight;
 
-
-
                     // 3) Next frame: add the transition and collapse
                     requestAnimationFrame(() => {
 
@@ -361,12 +359,6 @@ export function swiperDelete() {
                         card.style.height = "0";
                         console.log("––> triggered collapse:", card.style.transition, card.style.height);
                     });
-
-
-                    console.log("hello");
-
-
-
 
                     const articleData = card.dataset.article;
                     const parsed = JSON.parse(articleData);
