@@ -51,6 +51,8 @@
                 align-content: center;
                 background-color: var.$newsify-green;
                 position: relative;
+                overflow: hidden;
+
 
                 &.delete {
                     background-color: #FF5D5D;

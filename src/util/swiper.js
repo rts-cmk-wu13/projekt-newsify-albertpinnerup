@@ -189,6 +189,9 @@ export function swiperDelete() {
 
     container.forEach(article => {
 
+        console.log(article);
+
+
         const threshold = 100;
         const base_right = -62;
 
@@ -206,7 +209,7 @@ export function swiperDelete() {
         icon.style.position = "absolute"
         icon.style.top = "50%"
         icon.style.right = "50px"
-        icon.style.transform = "translateY(-50%"
+        icon.style.transform = "translateY(-50%)"
         icon.className = "article__delete"
 
 
@@ -279,53 +282,113 @@ export function swiperDelete() {
                 if (movedX > -threshold) {
                     content.classList.add("animate");
                     content.style.left = "0px";
-                }
+                };
 
                 if (iconElement) {
                     iconElement.style.transition = "right .7s ease-in-out";
-                    iconElement.style.right = base_right + "px"
-                }
-            }
+                    iconElement.style.right = base_right + "px";
+                };
+            };
 
             if (movedX < -threshold) {
 
                 if (card.contains(iconElement)) {
-                    iconElement.remove()
-                    iconElement.style.transition = "unset"
-                }
+                    iconElement.remove();
+                    iconElement.style.transition = "unset";
+                };
 
                 content.style.transition = "transform .6s ease-in-out";
                 content.style.transform = "translateX(-100%)";
 
                 content.addEventListener("transitionend", () => {
+
+                    const startHeight = card.offsetHeight + "px";
+                    card.style.height = startHeight;
+                    card.style.overflow = "hidden";
+
+                    // 2) Force reflow so the start height is applied immediately
+                    void card.offsetHeight;
+
+
+
+                    // 3) Next frame: add the transition and collapse
+                    requestAnimationFrame(() => {
+
+                        card.addEventListener('transitionend', (e) => {
+
+                            if (e.target === card && e.propertyName === "height") {
+                                console.log("transitionend on card:", e.propertyName);
+                                card.remove();
+                            }
+
+                            // … inside your card.transitionend handler, after card.remove():
+                            const wrapper = article.parentElement;
+                            const remaining = wrapper.querySelectorAll(".article__card").length;
+                            if (remaining === 0) {
+                                // 1) lock current height & overflow
+                                const h = wrapper.offsetHeight + "px";
+                                wrapper.style.height = h;
+                                wrapper.style.overflow = "hidden";
+                                void wrapper.offsetHeight; // force reflow
+
+                                // 2) set up the swipe transition *before* you trigger it
+                                wrapper.style.transition = "transform .3s ease-in-out";
+                                // now actually swipe
+                                requestAnimationFrame(() => {
+                                    wrapper.style.transform = "translateX(-100%)";
+                                });
+
+                                // 3) when that transform ends, collapse height
+                                wrapper.addEventListener("transitionend", function onSwipe(e) {
+                                    if (e.propertyName !== "transform") return;
+                                    wrapper.removeEventListener("transitionend", onSwipe);
+
+                                    // now collapse height
+                                    wrapper.style.transition = "height .3s ease-in-out";
+                                    wrapper.style.height = "0px";
+
+                                    wrapper.addEventListener("transitionend", () => {
+                                        wrapper.remove();
+                                    }, { once: true });
+                                }, { once: false });
+                            }
+
+
+
+                        }, { once: true })
+
+                        card.style.transition = "height 0.3s ease-in-out";
+                        card.style.height = "0";
+                        console.log("––> triggered collapse:", card.style.transition, card.style.height);
+                    });
+
+
+                    console.log("hello");
+
+
+
+
                     const articleData = card.dataset.article;
                     const parsed = JSON.parse(articleData);
                     const saved = readFromLocalStorage("savedArticles") || [];
 
-                    const updated = saved.filter(article => article.slug_name !== parsed.slug_name);
+                    const updated = saved.filter(article => article.uri !== parsed.uri);
                     saveTolocalStorage("savedArticles", updated);
 
-                    const wrapper = article.parentElement;
-                    const remaining = article.querySelectorAll(".article__card").length;
 
-                    if (remaining <= 1) {
-                        wrapper.remove();
-                    } else {
-                        card.remove();
-                    }
                 }, { once: true });
-            }
+            };
 
             setTimeout(() => {
                 if (card.contains(iconElement)) {
-                    iconElement.remove()
-                    iconElement.style.transition = "unset"
-                }
+                    iconElement.remove();
+                    iconElement.style.transition = "unset";
+                };
             }, 700);
 
             initialX = undefined;
             movedX = 0;
-        }
+        };
 
     });
-}
+};
