@@ -7,7 +7,7 @@ export default function splashScreen() {
 
     divElm.innerHTML = `
         <div class="splash__img">
-            <img src="src/img/newsify_logo_1.svg" alt="">
+            <img src="img/newsify_logo_1.svg" alt="">
             <h1 class="splash__title">Newsify</h1>
         </div>
     `

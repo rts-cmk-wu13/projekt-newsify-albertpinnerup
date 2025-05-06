@@ -8,7 +8,7 @@ export default function header(searchResults, page) {
     headerElm.innerHTML = `
         <div class="header__title-container">
             <div class="header__logo">
-                <img src="../src/img/newsify_logo_1.svg" alt="">
+                <img src="/img/newsify_logo_1.svg" alt="">
             </div>
             <p class="header__title">Newsify</p>
         </div>
@@ -19,24 +19,44 @@ export default function header(searchResults, page) {
 
     const searchInput = headerElm.querySelector("#search");
 
+    console.log(searchResults);
+    
 
     searchInput.addEventListener("input", e => {
-        const value = e.target.value.toLowerCase();
+
+        const value = e.target.value.toLowerCase().trim();
 
         
         
-    
         searchResults.forEach(article => {
 
-          console.log(article.element.parentElement.parentElement);
+          console.log(article.element.dataset.article);
+          
+
+          const data = JSON.parse(article.element.dataset.article);
+          
+          const title = (data.title || "").toLowerCase().trim();
+          const abstract = (data.abstract || "").toLowerCase().trim();
+          const section = (data.section || "").toLowerCase().trim();
+
+          // console.log(article.element.parentElement.parentElement);
           
           const isVisible =
-            article.title.toLowerCase().includes(value) ||
-            article.abstract.toLowerCase().includes(value) ||
-            article.section.toLowerCase().includes(value);
+            title.includes(value) ||
+            abstract.includes(value) ||
+            section.includes(value);
+
+            // console.log({
+            //   card: article.element,
+            //   parent1: article.element.parentElement,
+            //   parent2: article.element.parentElement?.parentElement
+            // });
     
           article.element.classList.toggle("hide", !isVisible);
-          article.element.parentElement.parentElement.classList.toggle("hide", !isVisible);
+
+          const sectionParent = article.element.parentElement.parentElement;
+
+          sectionParent.classList.toggle("hide", !isVisible && !sectionParent.querySelector(".article__card:not(.hide)"));
         });
       });
 

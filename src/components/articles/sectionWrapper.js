@@ -9,7 +9,7 @@ export default function sectionWrapper(sectionTitle) {
     closed.className = "closed";
     closed.innerHTML = `
         <div class="article__logo">
-            <img src="../src/img/newsify_logo_1.svg" alt="">
+            <img src="/img/newsify_logo_1.svg" alt="">
         </div>
         <h3 class="article__category">${sectionTitle.toUpperCase()}</h3>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" 
