@@ -1,0 +1,19 @@
+@use '/src/styles/variables' as var;
+
+#app {
+    display: grid;
+    height: 100vh;
+    background-color: light-dark(#fff, #1F1F1F);
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+}
+
+input {
+    background-color: var.$light-font-color;
+    color: var.$dark-font-color;
+    border: none;
+
+    &::placeholder {
+        color: rgba(34, 34, 34, 0.40);
+    }
+}

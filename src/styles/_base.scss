@@ -1,0 +1,75 @@
+@use '/src/styles/variables' as var;
+
+@font-face {
+    font-family: "Playfair";
+    src: url("/fonts/playfair_display/PlayfairDisplay-VariableFont_wght.ttf") format("truetype-variations");
+    font-weight: 1 999; 
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Open sans";
+    src: url("/fonts/openSans/OpenSans-VariableFont_wdth,wght.ttf") format("truetype-variations");
+    font-weight: 1 999; 
+    font-style: normal;
+  }
+  
+
+:root {
+    font-family: "Playfair", 'Times New Roman', Times, serif;
+
+    color-scheme: light dark;
+    position: relative;
+}
+
+/* CSS Document */
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 18px;
+}
+
+p {
+    padding-bottom: 1em;
+    font-family: 'Open sans';
+}
+
+/* RWD: */
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Open sans';
+    color: light-dark(var.$dark-font-color, var.$light-font-color);
+}
+
+button {
+    font-family: 'Open sans';
+    font-size: 1em;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+[data-dark="true"] {
+    color-scheme: dark;
+}
+
+[data-dark="false"] {
+    color-scheme: light;
+}
+
+html {
+   color: light-dark(var.$dark-font-color, var.$light-font-color);
+   background-color: light-dark(var.$light-background-color, var.$dark-background-color)
+}
