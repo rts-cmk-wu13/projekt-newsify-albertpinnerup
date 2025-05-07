@@ -58,6 +58,7 @@ export default function header(searchResults, page) {
           const sectionParent = article.element.parentElement.parentElement;
 
           sectionParent.classList.toggle("hide", !isVisible && !sectionParent.querySelector(".article__card:not(.hide)"));
+          
         });
       });
 
