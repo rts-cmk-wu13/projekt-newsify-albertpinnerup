@@ -27,7 +27,7 @@ export default function darkMode() {
     }
 
 
-    buttonElm.addEventListener("click", (e) => {
+    buttonElm.addEventListener("click", () => {
 
         darkBoo = !darkBoo
 
@@ -37,5 +37,4 @@ export default function darkMode() {
         console.log(darkBoo);
 
     })
-
 }

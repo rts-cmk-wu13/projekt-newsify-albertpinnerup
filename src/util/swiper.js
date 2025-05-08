@@ -9,9 +9,9 @@ export function swiperAdd() {
         const threshold = 100;
         const base_right = -62;
 
-        let initialX;
-        let currentX;
-        let movedX;
+        let initialX, initialY
+        let currentX, currentY
+        let movedX, movedY
 
         function createBookmarkIcon() {
             const span = document.createElement("span");
@@ -34,8 +34,6 @@ export function swiperAdd() {
             return span;
         }
 
-
-
         article.addEventListener("pointerdown", down)
         article.addEventListener("pointermove", move)
         article.addEventListener("pointerup", up)
@@ -43,6 +41,7 @@ export function swiperAdd() {
         function down(e) {
 
             initialX = e.clientX;
+            initialY = e.clientY
 
             const card = e.target.closest(".article__card");
             const content = e.target.closest(".article__content");
@@ -112,20 +111,20 @@ export function swiperAdd() {
 
         function up(e) {
 
-
             const card = e.target.closest(".article__card");
             const content = e.target.closest(".article__content");
             const iconElement = card.querySelector(".article__bookmark");
 
-            if (movedX < 0) {
+            
+            if (Math.abs(movedX) <= threshold) {
                 content.classList.add("animate");
                 content.style.left = "0px";
+            };
 
-                if (iconElement) {
-                    iconElement.style.transition = "right .7s ease-in-out";
-                    iconElement.style.right = base_right + "px"
-                }
-            }
+            if (iconElement) {
+                iconElement.style.transition = "right .7s ease-in-out";
+                iconElement.style.right = base_right + "px";
+            };
 
             if (movedX < -threshold) {
 
@@ -179,10 +178,6 @@ export function swiperAdd() {
     });
 }
 
-
-
-
-
 export function swiperDelete() {
 
     const container = document.querySelectorAll(".open")
@@ -195,23 +190,25 @@ export function swiperDelete() {
         const threshold = 100;
         const base_right = -62;
 
-        let initialX;
-        let currentX;
-        let movedX;
+        let initialX, initialY
+        let currentX, currentY
+        let movedX, movedY
 
-        let icon = document.createElement("span")
-        icon.innerHTML = `
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        function createDeleteIcon() {
+            const span = document.createElement("span");
+            span.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 6H21M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        `
-
-        icon.style.position = "absolute"
-        icon.style.top = "50%"
-        icon.style.right = "50px"
-        icon.style.transform = "translateY(-50%)"
-        icon.className = "article__delete"
-
+            `;
+            span.style.position = "absolute";
+            span.style.top = "50%";
+            span.style.right = "50px";
+            span.style.transform = "translateY(-50%)";
+            span.className = "article__delete";
+            return span;
+        }
 
         article.addEventListener("pointerdown", down)
         article.addEventListener("pointermove", move)
@@ -224,51 +221,111 @@ export function swiperDelete() {
         function down(e) {
 
             initialX = e.clientX;
+            initialY = e.clientY
             e.target.closest(".article__content").classList.remove("animate")
         }
 
+
+
+        // function move(e) {
+        //     currentX = e.clientX;
+        //     currentY = e.clientY;
+        //     movedX = currentX - initialX;
+        //     movedY = currentY - initialY;
+
+        //     const card = e.target.closest(".article__card");
+        //     const content = e.target.closest(".article__content");
+        //     const parentArticle = card.closest(".articles"); // Parent element for vertical scrolling
+        //     let iconElement = card.querySelector(".article__delete");
+
+        //     // Determine if the swipe is primarily horizontal
+        //     const isHorizontalSwipe = Math.abs(movedX) > Math.abs(movedY);
+
+        //     // Allow vertical scrolling on the parent element
+        //     if (!isHorizontalSwipe) {
+        //         // Apply damping to the vertical scroll
+        //         const dampingFactor = 0.08; // Adjust this value to control the smoothness (lower = smoother)
+        //         parentArticle.scrollTop -= movedY * dampingFactor; // Delegate vertical scrolling to the parent
+        //         return; // Exit early to allow vertical scrolling
+        //     }
+
+        //     // Prevent default behavior for horizontal swipes
+        //     e.preventDefault();
+
+        //     if (movedX < 0) {
+        //         content.style.left = movedX + "px";
+        //     }
+
+        //     if (movedX < 0 && !iconElement) {
+        //         iconElement = createDeleteIcon();
+        //         card.append(iconElement);
+        //         iconElement.classList.add("delete");
+        //     }
+
+        //     if (iconElement) {
+        //         const svg = iconElement.querySelector("svg");
+
+        //         if (movedX < -threshold) {
+        //             svg.style.fill = "currentColor";
+        //         } else {
+        //             svg.style.fill = "none";
+        //         }
+
+        //         const pullIn = Math.min(-movedX, threshold);
+        //         const locked = pullIn >= threshold;
+        //         const offset = locked ? threshold : pullIn;
+
+        //         iconElement.style.right = base_right + offset + "px";
+        //     }
+
+        //     if (movedX >= 0 && iconElement) {
+        //         iconElement.remove();
+        //     }
+        // }
+
         function move(e) {
             currentX = e.clientX;
+            currentY = e.clientY;
             movedX = currentX - initialX;
+            movedY = currentY - initialY;
+            
 
             const card = e.target.closest(".article__card");
             const content = e.target.closest(".article__content");
             let iconElement = card.querySelector(".article__delete");
 
-            if (movedX < 0) {
+            // Prevent default behavior for all swipes
+            e.preventDefault();
 
-                content.style.left = movedX + "px"
+            if (movedX < 0) {
+                content.style.left = movedX + "px";
             }
 
             if (movedX < 0 && !iconElement) {
-
-                card.append(icon);
-                iconElement = icon;
+                iconElement = createDeleteIcon();
+                card.append(iconElement);
                 iconElement.classList.add("delete");
             }
 
             if (iconElement) {
-                const svg = iconElement.querySelector("svg")
+                const svg = iconElement.querySelector("svg");
 
                 if (movedX < -threshold) {
-                    svg.style.fill = "currentColor"
+                    svg.style.fill = "currentColor";
                 } else {
-                    svg.style.fill = "none"
+                    svg.style.fill = "none";
                 }
-
 
                 const pullIn = Math.min(-movedX, threshold);
                 const locked = pullIn >= threshold;
                 const offset = locked ? threshold : pullIn;
 
-
-                iconElement.style.right = (base_right + offset) + "px"
+                iconElement.style.right = base_right + offset + "px";
             }
 
             if (movedX >= 0 && iconElement) {
-                iconElement.remove()
+                iconElement.remove();
             }
-
         }
 
         function up(e) {
@@ -277,9 +334,9 @@ export function swiperDelete() {
             const content = e.target.closest(".article__content");
             const iconElement = card.querySelector(".article__delete");
 
-            if (movedX < 0) {
+           
 
-                if (movedX > -threshold) {
+                if (Math.abs(movedX) <= threshold) {
                     content.classList.add("animate");
                     content.style.left = "0px";
                 };
@@ -288,7 +345,7 @@ export function swiperDelete() {
                     iconElement.style.transition = "right .7s ease-in-out";
                     iconElement.style.right = base_right + "px";
                 };
-            };
+            
 
             if (movedX < -threshold) {
 
@@ -378,8 +435,11 @@ export function swiperDelete() {
                 };
             }, 700);
 
-            initialX = undefined;
-            movedX = 0;
+            initialX = null;
+            initialY = null;
+            movedX = null;
+            movedY = null;
+
         };
 
     });

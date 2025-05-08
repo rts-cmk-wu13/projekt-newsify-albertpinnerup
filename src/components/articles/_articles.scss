@@ -44,7 +44,7 @@
             display: grid;
             opacity: 0;
             max-height: 0;
-            touch-action: none;
+            touch-action: pan-y;
 
             .article__card {
                 

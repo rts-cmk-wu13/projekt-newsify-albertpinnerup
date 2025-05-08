@@ -69,3 +69,16 @@ if (!readFromSessionStorage('splash')) {
 })();
 
 
+// app.append(onboarding(() => {
+
+//                 saveTolocalStorage("hasOnboarded", true)
+
+//                 const ob = document.querySelector(".onboarding");
+//                 if (ob) ob.remove()
+
+//                 app.append(header(searchableArticles, "news"), container, settingsContainer, footer())
+//                 darkMode()
+//                 swiperAdd()
+//                 setVh()
+                
+//             }));
