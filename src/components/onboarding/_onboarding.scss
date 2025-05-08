@@ -1,0 +1,109 @@
+@use '/src/styles/variables' as vars;
+
+.onboarding {
+
+    text-align: center;
+    position: relative;
+    padding: 1.9rem;
+    height: calc((var(--vh) * 100));
+    display: grid;
+    overflow-x: hidden;
+
+    .onboarding__carousel {
+        position: relative;
+
+        overflow: hidden;
+
+        .carousel__track {
+            display: flex;
+            width: 100%;
+            transition: transform 0.5s ease-in-out;
+            // will-change: transform;
+        }
+
+        .carousel__card {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .carousel__card--1 {
+            .content {
+                transform: translateX(0%);
+            }
+
+        }
+
+        .carousel__card--2 {
+            .content {
+                transform: translateX(100%);
+            }
+        }
+
+        .carousel__card--3 {
+            .content {
+                transform: translateX(200%);
+            }
+        }
+
+
+        .content {
+            position: absolute;
+            padding: 1.5rem;
+            bottom: 0;
+            left: 0;
+            background-color: light-dark(vars.$light-background-color, vars.$dark-background-color);
+        }
+    }
+
+    .buttons {
+        z-index: 100;
+        align-self: end;
+        display: flex;
+        gap: 5%;
+        justify-content: center;
+
+        .button {
+            display: flex;
+            max-width: 166px;
+            width: 100%;
+            height: 62px;
+            padding: 10px 31px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 40px;
+            margin-block-start: 3.25rem;
+        }
+
+        .button--skip {
+            border: solid 1px vars.$newsify-green;
+            color: vars.$newsify-green;
+        }
+
+        .button--cont {
+            background-color: vars.$newsify-green;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    .dots {
+        display: flex;
+        justify-content: center;
+        gap: .5rem;
+
+        .dot {
+            height: 16px;
+            width: 16px;
+            background-color: #C5C5C5;
+            border-radius: 16px;
+            transition: width .4s ease-out;
+        }
+
+        .dot.active {
+            background-color: vars.$newsify-green;
+            width: 66px;
+        }
+    }
+}

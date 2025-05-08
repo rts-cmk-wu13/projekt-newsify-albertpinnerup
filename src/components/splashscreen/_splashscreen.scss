@@ -1,0 +1,30 @@
+@use '/src/styles/variables' as vars;
+
+.splashscreen {
+
+    height: calc(var(--vh) * 100);
+    display: grid;
+    background-color: light-dark(vars.$light-background-color, vars.$dark-background-color);
+
+
+    .splash__img {
+        place-self: center;
+        max-width: 174px;
+        text-align: center;
+
+        img {
+            opacity: 0;
+            transform: scale(0);
+            transition: .6s cubic-bezier(.9,.03,.69,.22);
+        }
+    }
+
+    .splash__title {
+        color: transparent;
+        background-image: linear-gradient(light-dark(vars.$dark-font-color, vars.$light-font-color),light-dark(vars.$dark-font-color, vars.$light-font-color));
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-position: -750px 0;
+        transition: background-position 1.5s cubic-bezier(1, 0, 0, 1);
+    }
+}
