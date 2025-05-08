@@ -34,8 +34,6 @@ export function swiperAdd() {
             return span;
         }
 
-
-
         article.addEventListener("pointerdown", down)
         article.addEventListener("pointermove", move)
         article.addEventListener("pointerup", up)
@@ -113,7 +111,6 @@ export function swiperAdd() {
 
         function up(e) {
 
-
             const card = e.target.closest(".article__card");
             const content = e.target.closest(".article__content");
             const iconElement = card.querySelector(".article__bookmark");
@@ -180,10 +177,6 @@ export function swiperAdd() {
 
     });
 }
-
-
-
-
 
 export function swiperDelete() {
 

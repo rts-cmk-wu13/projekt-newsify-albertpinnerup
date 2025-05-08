@@ -52,7 +52,7 @@ export default function onboarding(onComplete) {
     let buttons = document.createElement('div');
     buttons.className = 'buttons';
     buttons.innerHTML = `
-      <a href="archive/index.html" class="button button--skip">Skip</a>
+      <a href="index.html" class="button button--skip">Skip</a>
       <button class="button button--cont">Continue</button>
     `;
     divElm.appendChild(buttons);
@@ -96,6 +96,9 @@ export default function onboarding(onComplete) {
             
             track.style.transform = `translateX(-${index * 100}%)`;
             updateDots()
+
+            const content = track.querySelector('.content');
+            void content.offsetHeight; // Trigger reflow
         }
     });
     
